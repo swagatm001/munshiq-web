@@ -43,7 +43,7 @@ body {
 }
 .theme-btn:hover { color: var(--ink); }
 
-.wrap { width: 100%; max-width: 680px; padding: 64px 24px 48px; text-align: center; }
+.wrap { width: 100%; max-width: 680px; padding: 48px 24px; margin: auto 0; text-align: center; }
 
 .mark { margin-bottom: 18px; }
 .name { font-size: 30px; font-weight: 700; letter-spacing: -.02em; }
@@ -90,4 +90,4 @@ h1 { font-size: clamp(26px, 5vw, 38px); line-height: 1.2; letter-spacing: -.02em
 .ca { font-size: 14px; color: var(--ink-2); border-top: 1px solid var(--rule); padding-top: 28px; max-width: 54ch; margin: 0 auto; }
 .ca a, .foot a { color: var(--thread); font-weight: 600; text-decoration: none; }
 
-.foot { margin-top: auto; padding: 26px 24px 30px; color: var(--muted); font-size: 12.5px; text-align: center; }
+.foot { padding: 26px 24px 30px; color: var(--muted); font-size: 12.5px; text-align: center; }
