@@ -11,7 +11,7 @@ export default function Waitlist() {
   async function submit(e) {
     e.preventDefault()
     if (!ENDPOINT) {
-      location.href = `mailto:hello@munshiq.com?subject=${encodeURIComponent('Early list')}&body=${encodeURIComponent(`Please add me to the Munshi early list: ${email}`)}`
+      location.href = `mailto:hello@munshihq.com?subject=${encodeURIComponent('Early list')}&body=${encodeURIComponent(`Please add me to the Munshi early list: ${email}`)}`
       return
     }
     setState('sending')
@@ -54,7 +54,7 @@ export default function Waitlist() {
       </form>
       {state === 'error' && (
         <span className="err">
-          That didn't go through — please retry, or write to hello@munshiq.com.
+          That didn't go through — please retry, or write to hello@munshihq.com.
         </span>
       )}
     </div>

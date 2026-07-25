@@ -1,6 +1,6 @@
 # munshiq-web — Munshi coming-soon site (React)
 
-**Live:** https://munshiq.com (GitHub Pages, `gh-pages` branch, custom
+**Live:** https://munshihq.com (GitHub Pages, `gh-pages` branch, custom
 domain set — see DNS below). Redeploy after changes with `npm run deploy`.
 Repo: https://github.com/swagatm001/munshiq-web
 
@@ -51,12 +51,15 @@ sharing widely:
 
 Alternatives: Netlify Forms, a Google Form endpoint, or your own API later.
 
-## DNS — connecting munshiq.com
+## DNS — connecting munshihq.com
 
 The GitHub Pages side is done (`public/CNAME` + repo Pages settings both say
-`munshiq.com`). The one remaining step is at the DNS host: the domain is
-registered at Network Solutions with **HostGator nameservers**, so edit the
-zone in the HostGator portal (or move nameservers to your preferred DNS):
+`munshihq.com`). The one remaining step is in **Squarespace**, where the
+domain is registered (Squarespace Domains, Squarespace nameservers):
+
+Squarespace → **Domains** → `munshihq.com` → **DNS settings** (or "Advanced
+DNS") → delete the default Squarespace website records for `@` and `www`,
+then add:
 
 | Type | Host | Value |
 |---|---|---|
@@ -66,19 +69,25 @@ zone in the HostGator portal (or move nameservers to your preferred DNS):
 | A | `@` | `185.199.111.153` |
 | CNAME | `www` | `swagatm001.github.io` |
 
-Replace the existing `@` A record (currently `66.235.200.170`, HostGator's
-own hosting). After propagation (minutes to a few hours):
+(The defaults being replaced point at Squarespace's own hosting —
+`198.185.159.x` / `198.49.23.x` — which currently serves a parking page.)
+
+After propagation (minutes to a few hours):
 
 1. Repo → Settings → Pages shows the DNS check passing; tick **Enforce
    HTTPS** once the certificate is issued (automatic, a few minutes more).
 2. **Waitlist endpoint:** create a free Formspree form, then bake it in:
    `VITE_WAITLIST_ENDPOINT=https://formspree.io/f/xxxx npm run deploy`.
-3. **Create `hello@munshiq.com`** — all mailto links point at it. Zoho Mail
-   free tier or Google Workspace; the MX records also go in the same zone.
+3. **Create `hello@munshihq.com`** — all mailto links point at it.
+   Squarespace sells Google Workspace for the domain, or use Zoho Mail's
+   free tier; MX records go in the same DNS panel.
 
 Until DNS flips, https://swagatm001.github.io/munshiq-web/ 301-redirects to
-munshiq.com (which still serves the old HostGator page) — this is the
-expected in-between state, not an outage.
+munshihq.com (which still serves the Squarespace parking page) — expected
+in-between state, not an outage.
+
+Note: `munshiq.com` (no "h") is a different domain owned by a third party
+(Network Solutions, Apr 2026) — not usable for this site.
 
 Pre-flight (from `../landing/GO-LIVE.md`, still applies): run a trademark
 search for "Munshi" in Classes 9 & 42 before going public, and settle the
