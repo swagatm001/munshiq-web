@@ -1,5 +1,9 @@
 # munshiq-web — Munshi coming-soon site (React)
 
+**Live:** https://swagatm001.github.io/munshiq-web/ (GitHub Pages, `gh-pages`
+branch). Redeploy after changes with `npm run deploy`. Repo:
+https://github.com/swagatm001/munshiq-web
+
 The public coming-soon page as a real React app (Vite). Same design as
 [`../landing/coming-soon.html`](../landing/coming-soon.html), componentized,
 plus what static HTML couldn't do: a theme toggle with persistence and a
@@ -47,25 +51,24 @@ sharing widely:
 
 Alternatives: Netlify Forms, a Google Form endpoint, or your own API later.
 
-## Go live at munshihq.com
+## Moving to munshihq.com
 
-A React app can't be hosted *on* Squarespace (it only embeds HTML/CSS code
-blocks). The standard path — Squarespace can still be the **registrar**:
+The site is live on GitHub Pages today. To put it on the real domain:
 
 1. **Register the domain.** `munshihq.com` (verified available 20 Jul 2026).
-   Squarespace Domains, Namecheap, GoDaddy — any registrar works.
-2. **Host the app** (all free-tier, pick one):
-   - **Vercel** — `npm i -g vercel && vercel --prod` from this folder, or
-     import the repo at vercel.com. Framework auto-detected (Vite).
-   - **Netlify** — `netlify deploy --prod` (config in `netlify.toml`), or
-     drag-and-drop the `dist/` folder at app.netlify.com/drop.
-   - **Cloudflare Pages** — connect repo, build command `npm run build`,
-     output `dist`.
-3. **Point the domain.** In the host's dashboard add `munshihq.com` — it
-   shows you the exact DNS records (an A/ALIAS for the apex plus a CNAME for
-   `www`). Add them at the registrar. SSL is automatic. Propagation up to
-   24–48 h, usually minutes.
-4. **Set the waitlist env var** (above) and redeploy.
+   Squarespace Domains, Namecheap, GoDaddy — any registrar works. (A React
+   app can't be hosted *on* Squarespace; it can still be the registrar.)
+2. **Option A — stay on GitHub Pages (free):** repo Settings → Pages →
+   Custom domain → `munshihq.com`; add the four GitHub Pages A records +
+   `www` CNAME at the registrar; tick "Enforce HTTPS".
+   **Option B — Vercel/Netlify/Cloudflare Pages:** import the repo (build
+   `npm run build`, output `dist`), add the domain in their dashboard, copy
+   the DNS records it shows to the registrar.
+3. **After the domain connects:** swap the two `og:` URLs in `index.html`
+   back to `https://munshihq.com/` and redeploy (`npm run deploy`).
+4. **Set the waitlist env var** (above) and redeploy. On plain GitHub Pages
+   there's no env-var UI — either hardcode the Formspree URL when building
+   (`VITE_WAITLIST_ENDPOINT=... npm run deploy`) or move to Option B.
 5. **Create `hello@munshihq.com`** — both mailto links point at it. Google
    Workspace, Zoho Mail (free tier), or an alias on an existing Workspace.
 
