@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Munshi — Your firm, in order. Coming soon.</title>
+    <meta name="description" content="Munshi is the operating system for India's boutique firms — one upload of your books becomes your MIS, compliance calendar, payroll and cash flow. Coming soon." />
+    <link rel="icon" type="image/svg+xml" href="./logo.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Munshi — Your firm, in order." />
+    <meta property="og:description" content="One upload of your books becomes your MIS, compliance calendar, payroll and cash flow. Built for India's boutique firms and their CAs. Coming soon." />
+    <!-- OG URLs must be absolute; swap both to https://munshihq.com/ when the domain connects. -->
+    <meta property="og:url" content="https://swagatm001.github.io/munshiq-web/" />
+    <meta property="og:image" content="https://swagatm001.github.io/munshiq-web/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script>
+      // Apply saved theme before first paint to avoid a flash.
+      try {
+        const t = localStorage.getItem('munshi-theme');
+        if (t) document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
