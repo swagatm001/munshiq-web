@@ -8,12 +8,10 @@ export default function App() {
       <main className="wrap">
         <div className="mark"><Mark /></div>
         <div className="name">Munshi</div>
-        <div className="tag">Your firm, in order.</div>
 
         <div className="thread-rule" role="presentation"><span className="knot" /></div>
 
         <h1>Coming soon.</h1>
-        <p className="sub">The operating system for India's boutique services firms.</p>
       </main>
 
       <footer className="foot">
