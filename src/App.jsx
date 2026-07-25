@@ -59,12 +59,12 @@ export default function App() {
           Are you a <b>Chartered Accountant</b>? We're inviting a small group of
           practices to shape the CA workspace — one dashboard across all your clients,
           filings prepared for your review.{' '}
-          <a href="mailto:hello@munshihq.com?subject=CA%20partner%20programme">Write to us →</a>
+          <a href="mailto:hello@munshiq.com?subject=CA%20partner%20programme">Write to us →</a>
         </p>
       </main>
 
       <footer className="foot">
-        © 2026 Munshi · <a href="mailto:hello@munshihq.com">hello@munshihq.com</a> · Made in India
+        © 2026 Munshi · <a href="mailto:hello@munshiq.com">hello@munshiq.com</a> · Made in India
       </footer>
     </>
   )

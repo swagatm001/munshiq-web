@@ -1,8 +1,8 @@
 # munshiq-web — Munshi coming-soon site (React)
 
-**Live:** https://swagatm001.github.io/munshiq-web/ (GitHub Pages, `gh-pages`
-branch). Redeploy after changes with `npm run deploy`. Repo:
-https://github.com/swagatm001/munshiq-web
+**Live:** https://munshiq.com (GitHub Pages, `gh-pages` branch, custom
+domain set — see DNS below). Redeploy after changes with `npm run deploy`.
+Repo: https://github.com/swagatm001/munshiq-web
 
 The public coming-soon page as a real React app (Vite). Same design as
 [`../landing/coming-soon.html`](../landing/coming-soon.html), componentized,
@@ -51,26 +51,34 @@ sharing widely:
 
 Alternatives: Netlify Forms, a Google Form endpoint, or your own API later.
 
-## Moving to munshihq.com
+## DNS — connecting munshiq.com
 
-The site is live on GitHub Pages today. To put it on the real domain:
+The GitHub Pages side is done (`public/CNAME` + repo Pages settings both say
+`munshiq.com`). The one remaining step is at the DNS host: the domain is
+registered at Network Solutions with **HostGator nameservers**, so edit the
+zone in the HostGator portal (or move nameservers to your preferred DNS):
 
-1. **Register the domain.** `munshihq.com` (verified available 20 Jul 2026).
-   Squarespace Domains, Namecheap, GoDaddy — any registrar works. (A React
-   app can't be hosted *on* Squarespace; it can still be the registrar.)
-2. **Option A — stay on GitHub Pages (free):** repo Settings → Pages →
-   Custom domain → `munshihq.com`; add the four GitHub Pages A records +
-   `www` CNAME at the registrar; tick "Enforce HTTPS".
-   **Option B — Vercel/Netlify/Cloudflare Pages:** import the repo (build
-   `npm run build`, output `dist`), add the domain in their dashboard, copy
-   the DNS records it shows to the registrar.
-3. **After the domain connects:** swap the two `og:` URLs in `index.html`
-   back to `https://munshihq.com/` and redeploy (`npm run deploy`).
-4. **Set the waitlist env var** (above) and redeploy. On plain GitHub Pages
-   there's no env-var UI — either hardcode the Formspree URL when building
-   (`VITE_WAITLIST_ENDPOINT=... npm run deploy`) or move to Option B.
-5. **Create `hello@munshihq.com`** — both mailto links point at it. Google
-   Workspace, Zoho Mail (free tier), or an alias on an existing Workspace.
+| Type | Host | Value |
+|---|---|---|
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| CNAME | `www` | `swagatm001.github.io` |
+
+Replace the existing `@` A record (currently `66.235.200.170`, HostGator's
+own hosting). After propagation (minutes to a few hours):
+
+1. Repo → Settings → Pages shows the DNS check passing; tick **Enforce
+   HTTPS** once the certificate is issued (automatic, a few minutes more).
+2. **Waitlist endpoint:** create a free Formspree form, then bake it in:
+   `VITE_WAITLIST_ENDPOINT=https://formspree.io/f/xxxx npm run deploy`.
+3. **Create `hello@munshiq.com`** — all mailto links point at it. Zoho Mail
+   free tier or Google Workspace; the MX records also go in the same zone.
+
+Until DNS flips, https://swagatm001.github.io/munshiq-web/ 301-redirects to
+munshiq.com (which still serves the old HostGator page) — this is the
+expected in-between state, not an outage.
 
 Pre-flight (from `../landing/GO-LIVE.md`, still applies): run a trademark
 search for "Munshi" in Classes 9 & 42 before going public, and settle the
